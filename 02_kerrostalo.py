@@ -46,5 +46,14 @@ class Building():
 
         return f"You selected the elevator {self.lista_ascensores[self.hissi_numero-1]} and you are going to floor number {self.piso_destino}"
 
-edificio = Building(0, 12, 5)
-print(edificio.run_elevator(2, 5))
+
+
+
+print("Create new building")
+edificio = int(input("Number of floors: "))
+ascensores = int(input("Number of elevators: "))
+ascensor_numero = int(input("Select the number of the elevators: "))
+numero_edificio = int(input("Select the number of the floor you wanna go: "))
+edificio = Building(0, edificio, ascensores)
+
+print(edificio.run_elevator(ascensor_numero, numero_edificio))
