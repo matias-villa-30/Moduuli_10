@@ -36,5 +36,15 @@ class Building():
         self.ylakerta = ylakerta
         self.hissit = hissit
 
-    def run_elevator(self):
-        pass
+    def run_elevator(self, hissi_numero, piso_destino):
+        self.hissi_numero = hissi_numero
+        self.piso_destino = piso_destino
+        self.lista_ascensores = []
+
+        for self.ascensor in range(1, self.hissit):
+            self.lista_ascensores.append(self.ascensor)
+
+        return f"You selected the elevator {self.lista_ascensores[self.hissi_numero-1]} and you are going to floor number {self.piso_destino}"
+
+edificio = Building(0, 12, 5)
+print(edificio.run_elevator(2, 5))
