@@ -20,16 +20,23 @@ class Hissi():
             self.counter -= 1
 
     def go_to_floor(self, piso_destino):
-        print(f"You are at {self.counter} floor")
+        print(f"You start at {self.counter} floor")
         self.piso_destino = piso_destino
         if self.counter <= self.piso_destino:
             self.floor_up()
         elif self.counter >= self.piso_destino:
             self.floor_down()
 
-        return f"You are at floor {self.counter}"
+        return f"You are now at floor {self.counter}"
 
 
 ascensor = Hissi(0, 10)
 
-print(ascensor.go_to_floor(8))
+while True:
+    piso = input("Select the floor you wanna reach (1-10), type 'exit' to leave the building: ")
+    if piso == "exit":
+        print("Heippa!")
+        break
+    else:
+        piso = int(piso)
+        print(ascensor.go_to_floor(piso))
