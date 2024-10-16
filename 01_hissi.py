@@ -1,4 +1,4 @@
-class Hissi():
+class Hissi:
     counter = 0
     def __init__(self, alakerta, ylakerta):
         self.alakerta = alakerta

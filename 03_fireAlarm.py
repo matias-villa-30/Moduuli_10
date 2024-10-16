@@ -1,4 +1,4 @@
-class Hissi():
+class Hissi:
     counter = 0
     def __init__(self, alakerta, ylakerta):
         self.alakerta = alakerta
@@ -29,7 +29,7 @@ class Hissi():
 
         return f"You are now at floor {self.counter}"
 
-class Building():
+class Building:
 
     def __init__(self, alakerta, ylakerta, hissit):
         self.alakerta = alakerta
