@@ -1,5 +1,7 @@
 import random
 
+
+
 class Auto:
     def __init__(self, rekisteritunnus, huippunopeus, tämänhetkinen_nopeus, kuljettu_matka):
         self.rekisteritunnus = rekisteritunnus
@@ -21,7 +23,7 @@ class Auto:
         return f"{self.rekisteritunnus:10} | {self.huippunopeus:10} km/h | {self.tämänhetkinen_nopeus:15} km/h | {self.kuljettu_matka:15} km"
 
 class Race:
-    def __init__(self, name, kilometers, car_list: list):
+    def __init__(self, name, kilometers, car_list):
         self.name = name
         self.kilometers = kilometers
         self.car_list = car_list
@@ -39,29 +41,42 @@ class Race:
         return "\n".join(stats)
 
     def race_finished(self):
-        for self.car in self.car_list:
-            while self.car.kuljettu_matka < self.kilometers:
+        print("-" * 75 + "\n Grand Demolition Derby: Lap 1 \n" + "_" * 75)
+        i = 2
+        linea = "-" * 75
+        while not any(car.kuljettu_matka >= self.kilometers for car in self.car_list):
+            self.hours_passed()
+            print(self.print_stats())
+            print(f"{linea}\n Grand Demolition Derby: Lap {i} \n {linea}")
+            i += 1
 
-                self.hours_passed()
-                print(self.print_stats())
-                print("-" * 75)
-        print("Race finished!")
         return True
 
 
 
-maxima_velocidad = random.randint(100, 200)
-cambio_velocidad = random.randint(-10, 15)
-
-maxima_velocidad2 = random.randint(100, 200)
-cambio_velocidad2 = random.randint(-10, 15)
-
-
-auto_1 = Auto(f"Zula", maxima_velocidad, cambio_velocidad, 0)
-auto_2 = Auto(f"Fidel", maxima_velocidad2, cambio_velocidad2, 0)
+def main():
+    autos = []
+    for i in range(1, 11):
+        autos.append(f"ABC-{i}")
 
 
-carrera = Race("Grand Demolition Derby", 8000, [auto_1, auto_2])
+    car_list = []
 
 
-carrera.race_finished()
+    for item in autos:
+        maxima_velocidad = random.randint(100, 200)  # Random top speed for each car
+        cambio_velocidad = random.randint(-10, 15)  # Initial random speed change
+        car_list.append(Auto(item, maxima_velocidad, cambio_velocidad, 0))
+
+    carrera = Race("Grand Demolition Derby", 8000, car_list)
+
+
+    if carrera.race_finished():
+        return True
+
+
+print(main())
+
+
+
+
